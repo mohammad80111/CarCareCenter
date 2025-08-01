@@ -1,18 +1,18 @@
-# Build stage
+# -------- Build Stage --------
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-COPY CarCenter.sln .                         # ????? ??? ??? ??? .sln ??? ???????
-COPY CarCenter/CarCenter.csproj ./CarCenter/
+COPY CarCenter.sln .                          # ??? ????
+COPY CarCenter/CarCenter.csproj CarCenter/   # ???? ???????
 
-RUN dotnet restore CarCenter/CarCenter.csproj
+RUN dotnet restore
 
 COPY CarCenter/. ./CarCenter/
 WORKDIR /src/CarCenter
 
 RUN dotnet publish -c Release -o /app/publish
 
-# Runtime stage
+# -------- Runtime Stage --------
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 
