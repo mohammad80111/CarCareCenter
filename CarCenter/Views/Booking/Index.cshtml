@@ -1,0 +1,63 @@
+﻿@model List<Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up" style="margin-top:120px;">
+    <h2>reservation</h2>
+    <div><span>You can add a </span> <span class="description-title">new reservation</span></div>
+</div><!-- End Section Title -->
+
+
+<p  class="btn btn-warning">
+    <a style="color:white;" asp-action="Create">Add a new reservation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                CarName
+            </th>
+            <th>
+                CarModel
+            </th>
+            <th>
+               Employee
+            </th>
+            <th>
+                Services
+            </th>
+            <th>
+               Car Size
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                 @item.CarName
+            </td>
+            <td>
+                @item.CarModel
+            </td>
+            <td>
+                @item.employee.EmployeeName
+            </td>
+            <td>
+                @item.roll.RollName
+            </td>
+            <td>
+                @item.carSize.CarSizeName
+            </td>
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-ID="@item.Id"> <i class="bi bi-pen"></i> </a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-ID="@item.Id" ><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+             }
+    </tbody>
+</table>

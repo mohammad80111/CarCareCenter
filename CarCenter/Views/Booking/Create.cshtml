@@ -1,0 +1,56 @@
+﻿@model CarCenter.Models.Booking
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="margin-top:120px;">Add reservation</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mt-2">
+                <label asp-for="CarName" class="control-label"></label>
+                <input asp-for="CarName" class="form-control" />
+                <span asp-validation-for="CarName" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="CarModel" class="control-label"></label>
+                <input asp-for="CarModel" class="form-control" />
+                <span asp-validation-for="CarModel" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="EmployeeID" class="control-label">Employee</label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.selectemployee"></select>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="RollID" class="control-label">Services</label>
+                <select asp-for="RollID" class="form-control" asp-items="ViewBag.selectrool"></select>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="CarSizeID" class="control-label">Car Size</label>
+                <select asp-for="CarSizeID" class="form-control" asp-items="ViewBag.selectcarsize"></select>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col-md-4">
+        <img style="width:500px; margin-left:100px;" src="https://www.pikpng.com/pngl/b/170-1708371_car-wash-png-clipart.png" />
+    </div>
+
+
+ 
+
+
+</div>
+
+<div class="mt-2">
+    <a asp-action="Index">Back to List</a>
+</div>
+
